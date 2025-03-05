@@ -47,6 +47,13 @@ const users = {
   "password": "password"
 }
 
+//ログアウト処理
+app.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  })
+})
+
 //ログイン処理
 app.post('/tasks', (req, res) => {
   const {email, password} = req.body;
@@ -58,6 +65,7 @@ app.post('/tasks', (req, res) => {
     res.status(401).send("承認失敗");
   }
 })
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
