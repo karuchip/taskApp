@@ -59,6 +59,13 @@ app.post('/tasks', (req, res) => {
   }
 })
 
+//ログアウト処理
+app.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
