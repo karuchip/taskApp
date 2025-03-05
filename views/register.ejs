@@ -9,19 +9,20 @@
 <body>
   <div>
     <h1>新規ユーザー登録</h1>
-    <form action="POST">
+    <form action="/register" method="post" id="userRegister">
       <label><p>お名前</p>
-        <input type="text">
+        <input type="text" name="userName">
       </label>
       <label><p>メールアドレス</p>
-        <input type="text">
+        <input type="text" name="email">
       </label>
       <label><p>パスワード</p>
-        <input type="password">
+        <input type="password" name="password">
       </label>
       <button>登録</button>
     </form>
     <a href="/login">戻る</a>
   </div>
 </body>
+<link rel="module" href="/static/controllers/userController">
 </html>
