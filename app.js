@@ -41,11 +41,11 @@ app.get('/tasks', (req, res) => {
 })
 
 //仮のユーザーデータ
-const users = {
+const users = [{
   "userName": "hanako",
   "email": "test@test",
   "password": "password"
-}
+}]
 
 //ログアウト処理
 app.get('/logout', (req, res) => {
@@ -64,6 +64,20 @@ app.post('/tasks', (req, res) => {
   }else {
     res.status(401).send("承認失敗");
   }
+})
+
+//新規ユーザー登録API
+app.post('/register', (req, res) => {
+  const {userName, email, password} = req.body;
+
+  if (users.some(user => user.email === email)) {
+    return res.status(400).json({message: "このメールアドレスはすでに登録されています"});
+  }
+
+  users.push({userName, email, password});
+  req.session.user = {userName,email};
+  res.redirect("/tasks");
+
 })
 
 
