@@ -19,6 +19,8 @@ app.use(session({
 const path = require('path')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 
+
+
 //テンプレートエンジンejsのルーティング
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -26,31 +28,28 @@ app.set('views', __dirname + '/views')
 app.get('/', (req, res) => {
   res.render('index')
 })
+
+
+
+//ユーザー処理
 app.get('/login', (req, res) => {
   res.render('login');
 })
 app.get('/register', (req, res) => {
   res.render('register');
 })
-//ログイン後のページ
-app.get('/tasks', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).send("ログインしてください");
-  }
-  res.render('tasks', { userName: req.session.user.userName});
-})
 
 //仮のユーザーデータ
 const users = [
   {
-  "userName": "hanako",
-  "email": "test@test",
-  "password": "password"
+    "userName": "hanako",
+    "email": "test@test",
+    "password": "password"
   },
   {
-  "userName": "aaa",
-  "email": "aaaa@test",
-  "password": "aaaaa"
+    "userName": "aaa",
+    "email": "aaaa@test",
+    "password": "aaaaa"
   }
 ]
 
@@ -72,6 +71,14 @@ app.post('/tasks', (req, res) => {
   }else {
     res.status(401).send("承認失敗：メールアドレスまたはパスワードが違います");
   }
+})
+
+//ログイン後のページ遷移
+app.get('/tasks', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send("ログインしてください");
+  }
+  res.render('tasks', { userName: req.session.user.userName});
 })
 
 //新規ユーザー登録API
