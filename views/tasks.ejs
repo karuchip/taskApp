@@ -9,10 +9,41 @@
 <body>
   <div>
     <h1>タスクリスト</h1>
-    <p>ようこそ、<%= userName %> さん!</p>
-  </div>
+    <!-- セッション情報のユーザー名表示は一時的に削除 -->
     <div>
       <a href="/logout">ログアウト</a>
     </div>
+  </div>
+  <div class="FVtitle-container">
+    <h1>FV</h1>
+    <p class="p1"></p>
+    <a href="/add">追加</a>
+  </div>
+  <div class="task-container">
+    <div class="fast-task">
+      <h2>期限が近いタスク</h2>
+      <ul>
+        <li class="task-complete-btn"><button>完了</button></li>
+        <li class="task-duedate">期限</li>
+        <li class="task-name">タスク1</li>
+        <li class="task-memo">メモメモ</li>
+        <li class="task-complete-btn"><button>編集</button></li>
+        <li class="task-complete-btn"><button>削除</button></li>
+      </ul>
+    </div>
+
+    <div class="slow-task">
+      <h2>通常タスク</h2>
+      <h3>プロジェクト名</h3>
+      <ul>
+        <li class="task-complete-btn"><button>完了</button></li>
+        <li class="task-duedate">期限</li>
+        <li class="task-name">タスク1</li>
+        <li class="task-memo">メモメモ</li>
+        <li class="task-complete-btn"><button>編集</button></li>
+        <li class="task-complete-btn"><button>削除</button></li>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>
