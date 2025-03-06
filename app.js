@@ -41,11 +41,18 @@ app.get('/tasks', (req, res) => {
 })
 
 //仮のユーザーデータ
-const users = [{
+const users = [
+  {
   "userName": "hanako",
   "email": "test@test",
   "password": "password"
-}]
+  },
+  {
+  "userName": "aaa",
+  "email": "aaaa@test",
+  "password": "aaaaa"
+  }
+]
 
 //ログアウト処理
 app.get('/logout', (req, res) => {
@@ -57,12 +64,13 @@ app.get('/logout', (req, res) => {
 //ログイン処理
 app.post('/tasks', (req, res) => {
   const {email, password} = req.body;
-  if(email === users.email && password === users.password) {
-    req.session.user = users;
+  const user = users.find(u => u.email ===email && u.password === password);
+  if(user) {
+    req.session.user = user;
     console.log("[承認完了]メールアドレスとパスワードが一致");
     res.redirect("/tasks");
   }else {
-    res.status(401).send("承認失敗");
+    res.status(401).send("承認失敗：メールアドレスまたはパスワードが違います");
   }
 })
 
