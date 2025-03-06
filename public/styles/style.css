@@ -1,7 +1,56 @@
 body {
   width: 100%;
-  display: flex;
-  justify-content: center;
   align-items: center;
+}
+
+li {
+  list-style: none;
+}
+
+.FVtitle-container {
+  display: flex;
+  justify-content: space-between;
+}
+.FVtitle-container h1 {
+  margin-left: 40px;
+}
+.FVtitle-container p1 {
+  width: auto;
+}
+.FVtitle-container a {
+  padding-right: 40px;
+}
+
+.fast-task {
+  margin-bottom: 60px;
+}
+
+.task-container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.task-container ul {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 22px;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.task-container btn {
+  font-size: 22px;
+}
+
+.task-name {
+  width: 300px;
+}
+
+.task-memo {
+  width: 200px;
+}
+
+.task-duedate {
+  width: 100px;
 }
 /*# sourceMappingURL=style.css.map */
