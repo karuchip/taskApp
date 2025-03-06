@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/styles/style.css">
+  <title>Add</title>
+</head>
+<body>
+  <div class="add-container">
+    <h2>新規タスク</h2>
+    <form action="/add" method="post" id="addTask">
+      <label>
+        <p id="add-task-name">タスク名</p>
+        <input type="text">
+      </label>
+      <label>
+        <p id="add-project-name">プロジェクト名</p>
+        <input type="text">
+      </label>
+      <label>
+        <p id="add-due-date">期限</p>
+        <input type="text">
+      </label>
+      <label>
+        <p id="add-description">内容</p>
+        <input type="text">
+      </label>
+      <label>
+        <p id="add-priority">優先度</p>
+        <input type="text">
+      </label>
+      <button type="submit">追加</button>
+    </form>
+  </div>
+</body>
+</html>
