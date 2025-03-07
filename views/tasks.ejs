@@ -43,7 +43,7 @@
             <li class="task-name"><%= task.taskName %></li>
             <li class="task-memo"><%= task.description %></li>
             <a href="/editTask/<%= task.id %>" class="task-complete-btn">編集</a>
-            <li class="task-complete-btn"><button>削除</button></li>
+            <a href="/deleteTask/<%= task.id %>" class="task-complete-btn">削除</a>
           </div>
         </ul>
         <% }) %>
