@@ -95,25 +95,49 @@ app.post('/register', (req, res) => {
   res.redirect("/tasks");
 })
 
-//(開発用)一時的に認証をスキップ
-app.get("/tasks", async (req, res) => {
-  res.render('tasks');
-});
 
-//add画面への遷移
+//タスク処理（taskController.js）
+//仮のtaskデータ
+const tasksData = [
+  {
+    "taskName": "FVにタスクを表示する",
+    "projectName": "タスク管理webアプリ",
+    "dueDate": "2024/03/07",
+    "description": "メモメモ",
+    "priority": "high"
+  },
+  {
+    "taskName": "FVにタスクを表示する2",
+    "projectName": "タスク管理webアプリ2",
+    "dueDate": "2024/03/08",
+    "description": "メモメモ2",
+    "priority": "high"
+  }
+];
+
+//ログイン後、タスク一覧の取得
+app.get("/tasks", (req, res) => {
+  res.render('tasks',{tasksData: tasksData});
+});
+// {
+//   taskName: tasksData.taskName,
+//   projectName: tasksData.projectName,
+//   dueDate: tasksData.dueDate,
+//   description: tasksData.description,
+//   priority: tasksData.priority
+// });
+
+//タスク追加画面への遷移
 app.get('/add', (req, res) => {
   res.render('add');
 })
 
-//仮のtaskデータ
-const tasksData = [];
-
 //タスク追加API
 app.post('/add', (req, res) => {
-  const {addTaskName, addProjectName, addDueDate, addDescription, addPriority} = req.body;
-  tasksData.push({addTaskName, addProjectName, addDueDate, addDescription, addPriority});
+  const {taskName, projectName, dueDate, description, priority} = req.body;
+  tasksData.push({taskName, projectName, dueDate, description, priority});
   console.log(tasksData);
-  res.redirect("/tasks");
+  res.render("tasks", {tasksData: tasksData});
 })
 
 

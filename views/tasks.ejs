@@ -34,15 +34,19 @@
 
     <div class="slow-task">
       <h2>通常タスク</h2>
-      <h3>プロジェクト名</h3>
-      <ul>
-        <li class="task-complete-btn"><button>完了</button></li>
-        <li class="task-duedate">期限</li>
-        <li class="task-name">タスク1</li>
-        <li class="task-memo">メモメモ</li>
-        <li class="task-complete-btn"><button>編集</button></li>
-        <li class="task-complete-btn"><button>削除</button></li>
-      </ul>
+      <% tasksData.forEach((task) => { %>
+        <ul>
+          <h3><%= task.projectName%></h3>
+          <div class="slow-task-li">
+            <li class="task-complete-btn"><button>完了</button></li>
+            <li class="task-duedate"><%= task.dueDate %></li>
+            <li class="task-name"><%= task.taskName %></li>
+            <li class="task-memo"><%= task.description %></li>
+            <li class="task-complete-btn"><button>編集</button></li>
+            <li class="task-complete-btn"><button>削除</button></li>
+          </div>
+        </ul>
+        <% }) %>
     </div>
   </div>
 </body>

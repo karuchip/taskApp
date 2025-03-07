@@ -31,9 +31,8 @@ li {
 }
 
 .task-container ul {
-  display: flex;
-  justify-content: space-evenly;
-  font-size: 22px;
+  display: block;
+  font-size: 18px;
   padding: 0;
   margin: 0 0 10px 0;
 }
@@ -52,5 +51,10 @@ li {
 
 .task-duedate {
   width: 100px;
+}
+
+.slow-task-li {
+  display: flex;
+  justify-content: space-evenly;
 }
 /*# sourceMappingURL=style.css.map */
