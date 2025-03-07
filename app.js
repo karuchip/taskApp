@@ -108,7 +108,7 @@ const tasksData = [
     priority: "high"
   },
   {
-    id: 1,
+    id: 2,
     taskName: "FVにタスクを表示する2",
     projectName: "タスク管理webアプリ2",
     dueDate: "2024/03/08",
@@ -119,6 +119,7 @@ const tasksData = [
 
 //ログイン後、タスク一覧の取得
 app.get("/tasks", (req, res) => {
+  console.log(tasksData);
   res.render('tasks',{tasksData: tasksData});
 });
 
@@ -139,7 +140,6 @@ app.post('/add', (req, res) => {
 app.get('/editTask/:id', (req, res) => {
   const taskId = parseInt(req.params.id, 10);
   const task = tasksData.find(t => t.id ===taskId);
-
   if(!task) {
     return res.status(404).send("タスクが見つかりません")
   }
@@ -147,7 +147,7 @@ app.get('/editTask/:id', (req, res) => {
 })
 
 //タスク更新
-app.post('/update/:id', (req, res) => {
+app.post('/updateTask/:id', (req, res) => {
   const taskId = parseInt(req.params.id, 10);
   const taskIndex = tasksData.findIndex(t => t.id === taskId);
 
@@ -160,7 +160,7 @@ app.post('/update/:id', (req, res) => {
     ...tasksData[taskIndex],
     ...req.body
   };
-
+  console.log(tasksData[taskIndex]);
   res.redirect("/tasks");
 });
 
