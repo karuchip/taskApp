@@ -8,7 +8,7 @@
 <body>
   <div class="add-container">
     <h2>タスク編集</h2>
-    <form action="/update/<%= task.id %>" method="post">
+    <form id="editTaskForm" method="post" action="/updateTask/<%= task.id %>">
       <input type="hidden" name="id" value="<%= task.id %>">
       <label>
         <p>タスク名</p>
