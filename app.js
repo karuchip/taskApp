@@ -98,7 +98,7 @@ app.post('/register', (req, res) => {
 
 //タスク処理（taskController.js）
 //仮のtaskデータ
-const tasksData = [
+let tasksData = [
   {
     id: 1,
     taskName: "FVにタスクを表示する",
@@ -161,6 +161,13 @@ app.post('/updateTask/:id', (req, res) => {
     ...req.body
   };
   console.log(tasksData[taskIndex]);
+  res.redirect("/tasks");
+});
+
+//タスク削除処理
+app.get('/deleteTask/:id', (req, res) => {
+  const taskId = parseInt(req.params.id, 10);
+  tasksData = tasksData.filter(t => t.id !== taskId);
   res.redirect("/tasks");
 });
 
