@@ -11,24 +11,24 @@
     <h2>新規タスク</h2>
     <form action="/add" method="post" id="addTask">
       <label>
-        <p id="add-task-name">タスク名</p>
-        <input type="text">
+        <p>タスク名</p>
+        <input type="text" name="taskName" id="addTaskName">
       </label>
       <label>
-        <p id="add-project-name">プロジェクト名</p>
-        <input type="text">
+        <p>プロジェクト名</p>
+        <input type="text" name="projectName" id="addProjectName">
       </label>
       <label>
-        <p id="add-due-date">期限</p>
-        <input type="text">
+        <p>期限</p>
+        <input type="text" name="dueDate" id="addDueDate">
       </label>
       <label>
-        <p id="add-description">内容</p>
-        <input type="text">
+        <p>内容</p>
+        <input type="text" name="description" id="addDescription">
       </label>
       <label>
-        <p id="add-priority">優先度</p>
-        <input type="text">
+        <p>優先度</p>
+        <input type="text" name="priority" id="addPriority">
       </label>
       <button type="submit">追加</button>
     </form>
