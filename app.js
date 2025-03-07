@@ -100,18 +100,20 @@ app.post('/register', (req, res) => {
 //仮のtaskデータ
 const tasksData = [
   {
-    "taskName": "FVにタスクを表示する",
-    "projectName": "タスク管理webアプリ",
-    "dueDate": "2024/03/07",
-    "description": "メモメモ",
-    "priority": "high"
+    id: 1,
+    taskName: "FVにタスクを表示する",
+    projectName: "タスク管理webアプリ",
+    dueDate: "2024/03/07",
+    description: "メモメモ",
+    priority: "high"
   },
   {
-    "taskName": "FVにタスクを表示する2",
-    "projectName": "タスク管理webアプリ2",
-    "dueDate": "2024/03/08",
-    "description": "メモメモ2",
-    "priority": "high"
+    id: 1,
+    taskName: "FVにタスクを表示する2",
+    projectName: "タスク管理webアプリ2",
+    dueDate: "2024/03/08",
+    description: "メモメモ2",
+    priority: "high"
   }
 ];
 
@@ -119,13 +121,6 @@ const tasksData = [
 app.get("/tasks", (req, res) => {
   res.render('tasks',{tasksData: tasksData});
 });
-// {
-//   taskName: tasksData.taskName,
-//   projectName: tasksData.projectName,
-//   dueDate: tasksData.dueDate,
-//   description: tasksData.description,
-//   priority: tasksData.priority
-// });
 
 //タスク追加画面への遷移
 app.get('/add', (req, res) => {
@@ -134,11 +129,40 @@ app.get('/add', (req, res) => {
 
 //タスク追加API
 app.post('/add', (req, res) => {
-  const {taskName, projectName, dueDate, description, priority} = req.body;
-  tasksData.push({taskName, projectName, dueDate, description, priority});
+  const {taskId, taskName, projectName, dueDate, description, priority} = req.body;
+  tasksData.push({taskId, taskName, projectName, dueDate, description, priority});
   console.log(tasksData);
   res.render("tasks", {tasksData: tasksData});
 })
+
+//タスク編集
+app.get('/editTask/:id', (req, res) => {
+  const taskId = parseInt(req.params.id, 10);
+  const task = tasksData.find(t => t.id ===taskId);
+
+  if(!task) {
+    return res.status(404).send("タスクが見つかりません")
+  }
+  res.render("editTask", {task});
+})
+
+//タスク更新
+app.post('/update/:id', (req, res) => {
+  const taskId = parseInt(req.params.id, 10);
+  const taskIndex = tasksData.findIndex(t => t.id === taskId);
+
+  if (taskIndex === -1) {
+    return res.status(404).send("タスクが見つかりません")
+  }
+
+  //更新処理
+  tasksData[taskIndex] = {
+    ...tasksData[taskIndex],
+    ...req.body
+  };
+
+  res.redirect("/tasks");
+});
 
 
 app.listen(port, () => {

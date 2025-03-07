@@ -42,7 +42,7 @@
             <li class="task-duedate"><%= task.dueDate %></li>
             <li class="task-name"><%= task.taskName %></li>
             <li class="task-memo"><%= task.description %></li>
-            <li class="task-complete-btn"><button>編集</button></li>
+            <a href="/editTask/<%= task.id %>" class="task-complete-btn">編集</a>
             <li class="task-complete-btn"><button>削除</button></li>
           </div>
         </ul>
