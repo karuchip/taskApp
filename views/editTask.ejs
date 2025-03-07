@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>editTask</title>
+</head>
+<body>
+  <div class="add-container">
+    <h2>タスク編集</h2>
+    <form action="/update/<%= task.id %>" method="post">
+      <input type="hidden" name="id" value="<%= task.id %>">
+      <label>
+        <p>タスク名</p>
+        <input type="text" name="taskName" value="<%= task.taskName %>">
+      </label>
+      <label>
+        <p>プロジェクト名</p>
+        <input type="text" name="projectName" value="<%= task.projectName %>">
+      </label>
+      <label>
+        <p>期限</p>
+        <input type="text" name="dueDate" value="<%= task.dueDate %>">
+      </label>
+      <label>
+        <p>内容</p>
+        <input type="text" name="description" value="<%= task.description %>">
+      </label>
+      <label>
+        <p>優先度</p>
+        <input type="text" name="priority" value="<%= task.priority %>">
+      </label>
+      <button type="submit">更新</button>
+    </form>
+  </div>
+</body>
+</html>
